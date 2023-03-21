@@ -21,38 +21,64 @@ const employees = [
     { id: 30, name: 'Name_20', managerId: 24 },
   ]
 
-function getUserById(users) {
- for(let i = 0; i < employees.length; i++){
-   if(employees[i].id === users){
-      console.log(employees[i]);
-    }
+function getUserById(userId){
+  return employees.find(l =>  {
+    return l.id === userId
+   }) 
  }
-}
-getUserById(28)
+let we = getUserById(12);
 
+console.log(we);
 
-function getEmplyeesMap(users) {
+function getManagerEmplyees(managerId) {
     let arr = []
       for(let i = 0; i < employees.length;i++){
-        if(employees[i].managerId === users){
+        if(employees[i].managerId === managerId){
             arr.push(employees[i])
         }
-      }console.log(arr);
+     }return arr
   }
-  getEmplyeesMap(23)
+  getManagerEmplyees(23)
 
 
+function getManagerEmplyees(manager) {
+  employees.forEach(value =>{
+    if(value.managerId === manager)
+//    console.log(employees.map((data,t,w) => [t])); 
+ console.log(value);
+  })
+}
+getManagerEmplyees(12)
 
-function getEmplyeesMap(users) {
-    let arr = []
-      for(let i = 0; i < employees.length; i++){
-        if(employees[i].managerId === users){
-            arr.push(employees[i])
-        }
-      }
-      console.log(`${users}: `, arr);
+function getManagerEmplyees(managerId) {
+   return employees.filter((value) => {
+         return value.managerId === managerId
+  })}
+//   let c =  getManagerEmplyees(23)
+//  console.log(c);
+  
+function getEmplyeesMap(){
+    let result = {};
+    employees.forEach(value => {
+      result[value.id] = [getManagerEmplyees(value.id)]
+    })
+    return result
+ }
+  
+ const tt = getEmplyeesMap()
+ console.log(tt);
 
-  }
-  for(let i = 0; i < employees.length; i++){
-      getEmplyeesMap(employees[i].id )
-  }
+function getEmplyeesMap(){
+   let result = {};
+   employees.forEach(value => {
+
+    let emp = result[value.id]
+    let managers = result[value.managerId] 
+
+    result[value.id] = []
+   })
+   return result
+}
+ 
+const tt = getEmplyeesMap()
+console.log(tt);
