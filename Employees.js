@@ -26,59 +26,44 @@ function getUserById(userId){
     return l.id === userId
    }) 
  }
-let we = getUserById(12);
-
-console.log(we);
+console.log(getUserById(12));
 
 function getManagerEmplyees(managerId) {
-    let arr = []
-      for(let i = 0; i < employees.length;i++){
-        if(employees[i].managerId === managerId){
-            arr.push(employees[i])
-        }
-     }return arr
-  }
-  getManagerEmplyees(23)
-
-
-function getManagerEmplyees(manager) {
-  employees.forEach(value =>{
-    if(value.managerId === manager)
-//    console.log(employees.map((data,t,w) => [t])); 
- console.log(value);
+  return employees.filter((value) => {
+      return value.managerId === managerId
   })
 }
-getManagerEmplyees(12)
 
-function getManagerEmplyees(managerId) {
-   return employees.filter((value) => {
-         return value.managerId === managerId
-  })}
-//   let c =  getManagerEmplyees(23)
-//  console.log(c);
+console.log(getManagerEmplyees(11));
+
+function getManagerForEmplyees(managerId) {
+  return employees.filter((value) => {
+      return value.managerId === managerId
+  })
+}
   
 function getEmplyeesMap(){
     let result = {};
     employees.forEach(value => {
-      result[value.id] = [getManagerEmplyees(value.id)]
+      result[value.id] = getManagerForEmplyees(value.id)
     })
     return result
  }
   
- const tt = getEmplyeesMap()
- console.log(tt);
+ const Res = getEmplyeesMap()
+ console.log(Res);
 
-function getEmplyeesMap(){
-   let result = {};
-   employees.forEach(value => {
+// function getEmplyeesMap(){
+//    let result = {};
+//    employees.forEach(value => {
 
-    let emp = result[value.id]
-    let managers = result[value.managerId] 
+//     let emp = result[value.id]
+//     let managers = result[value.managerId] 
 
-    result[value.id] = []
-   })
-   return result
-}
+//     result[value.id] = []
+//    })
+//    return result
+// }
  
-const tt = getEmplyeesMap()
-console.log(tt);
+// const tt = getEmplyeesMap()
+// console.log(tt);
