@@ -21,22 +21,22 @@ const employees = [
     { id: 30, name: 'Name_20', managerId: 24 },
   ]
 
-function getUserById(userId){
-  return employees.find(l =>  {
-    return l.id === userId
-   }) 
- }
-console.log(getUserById(12));
+// function getUserById(userId){
+//   return employees.find(l =>  {
+//     return l.id === userId
+//    }) 
+//  }
+// console.log(getUserById(12));
 
-function getManagerEmplyees(managerId) {
-  return employees.filter((value) => {
-      return value.managerId === managerId
-  })
-}
+// function getManagerEmplyees(managerId) {
+//   return employees.filter((value) => {
+//       return value.managerId === managerId
+//   })
+// }
 
-console.log(getManagerEmplyees(11));
+// console.log(getManagerEmplyees(11));
 
-function getManagerForEmplyees(managerId) {
+function getManagerForMap(managerId) {
   return employees.filter((value) => {
       return value.managerId === managerId
   })
@@ -45,7 +45,7 @@ function getManagerForEmplyees(managerId) {
 function getEmplyeesMap(){
     let result = {};
     employees.forEach(value => {
-      result[value.id] = getManagerForEmplyees(value.id)
+      result[value.id] = getManagerForMap(value.id)
     })
     return result
  }
