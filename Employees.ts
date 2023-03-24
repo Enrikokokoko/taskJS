@@ -1,5 +1,9 @@
 type Person = { id: number, name: string, managerId: number };
 
+interface ResObject {
+    [key: number]: Array<Person>
+};
+
 const employees : Array<Person> = [
     { id: 11, name: 'Name_1', managerId: 24 },
     { id: 12, name: 'Name_2', managerId: 24 },
@@ -38,7 +42,7 @@ function getManagerEmplyees(managerId: number ): Array<Person> {
 console.log(getManagerEmplyees(11));
 
 function getEmplyeesMap(): object {
-  const result: object = {}
+  const result: ResObject = {}
   
   employees.forEach((user) => {
     if (result[user.managerId] === undefined) {
