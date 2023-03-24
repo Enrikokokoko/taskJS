@@ -1,5 +1,4 @@
 type Person = { id: number, name: string, managerId: number };
-type Users = { managerId: object };
 
 const employees : Array<Person> = [
     { id: 11, name: 'Name_1', managerId: 24 },
@@ -25,32 +24,29 @@ const employees : Array<Person> = [
   ]
 
 function getUserById(userId: number ): Person | undefined {
-  return employees.find((l): boolean =>  {
-    return l.id === userId
+  return employees.find((value) => {
+    return value.id === userId
    }) 
  }
 console.log(getUserById(12));
 
 function getManagerEmplyees(managerId: number ): Array<Person> {
-  return employees.filter((value): boolean => {
-      return value.managerId === managerId
+  return employees.filter((value) => {
+    return value.managerId === managerId
   })
 }
-
 console.log(getManagerEmplyees(11));
 
-function getEmplyeesMap(): object | null {
-  const result = (o: object | null): void => {}
+function getEmplyeesMap(): object {
+  const result: object = {}
   
-  employees.forEach((user) : Array<Users> | void => {
+  employees.forEach((user) => {
     if (result[user.managerId] === undefined) {
-      result[user.managerId] = [user]
+    result[user.managerId] = [user]
     } else {
-      result[user.managerId].push(user)
+    result[user.managerId].push(user)
     }
   })
-  
   return result
 }
-
 console.log(getEmplyeesMap())
